@@ -1,20 +1,22 @@
 package com.sample.secondtry.review;
-
+import com.sample.secondtry.review.category.*;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
-//model object
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
+
 public class Review {
 	private long id;
     private String username;
     private String title;
-    private String text;
+    private String content;
+    private Category category;
 
-    public Review(long id, String username, String title, String text) {
+    public Review(long id, String username, String title, String content, Category category) {
         this.id = id;
         this.username = username;
         this.title = title;
-        this.text = text;
+        this.content = content;
+        this.category = category;
     }
 
     public long getId(){
@@ -29,8 +31,16 @@ public class Review {
         return this.title;
     }
   
-    public String getText(){
-        return this.text;
+    public String getContent(){
+        return this.content;
+    }
+
+    public String getCategory(){
+        return this.category.getName();
+    }
+
+    public void setCategory(Category category){
+        this.category = category;
     }
 
     public void setId(long id){
